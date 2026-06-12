@@ -1,46 +1,6 @@
-const countries = {
-  uae: {
-    name: "United Arab Emirates",
-    flag: "🇦🇪",
-    currency: "AED",
-    exchangeRate: "1 AED ≈ ₹23",
-    shipping: "DHL Available",
-    products: [
-      "iPhone",
-      "MacBook",
-      "PlayStation",
-      "Luxury Watches",
-    ],
-  },
-
-  usa: {
-    name: "United States",
-    flag: "🇺🇸",
-    currency: "USD",
-    exchangeRate: "1 USD ≈ ₹86",
-    shipping: "DHL Available",
-    products: [
-      "Laptops",
-      "Graphics Cards",
-      "iPhone",
-      "Gaming Consoles",
-    ],
-  },
-
-  japan: {
-    name: "Japan",
-    flag: "🇯🇵",
-    currency: "JPY",
-    exchangeRate: "1 JPY ≈ ₹0.60",
-    shipping: "DHL Available",
-    products: [
-      "Cameras",
-      "Gaming",
-      "Electronics",
-      "Automotive Parts",
-    ],
-  },
-};
+import Link from "next/link";
+import { countries } from "../../data/countries";
+import { products } from "../../data/products";
 
 export default async function CountryPage({
   params,
@@ -49,8 +9,9 @@ export default async function CountryPage({
 }) {
   const { id } = await params;
 
-  const country =
-    countries[id as keyof typeof countries];
+  const country = countries.find(
+    (c) => c.id === id
+  );
 
   if (!country) {
     return (
@@ -60,16 +21,23 @@ export default async function CountryPage({
     );
   }
 
+  const countryProducts = products.filter((product) =>
+    product.offers.some(
+      (offer) =>
+        offer.country.toLowerCase() ===
+        country.name.toLowerCase()
+    )
+  );
+
   return (
     <main className="min-h-screen bg-black text-white p-10">
-
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
 
         <h1 className="text-5xl font-bold mb-6">
           {country.flag} {country.name}
         </h1>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 mb-10">
 
           <div className="border border-gray-800 rounded-xl p-6">
             <h2 className="text-xl font-bold mb-2">
@@ -77,7 +45,18 @@ export default async function CountryPage({
             </h2>
 
             <p>{country.currency}</p>
-            <p>{country.exchangeRate}</p>
+          </div>
+
+          <div className="border border-gray-800 rounded-xl p-6">
+            <h2 className="text-xl font-bold mb-2">
+              Famous For
+            </h2>
+
+            {country.famousFor.map((item) => (
+              <p key={item}>
+                • {item}
+              </p>
+            ))}
           </div>
 
           <div className="border border-gray-800 rounded-xl p-6">
@@ -85,23 +64,51 @@ export default async function CountryPage({
               Shipping
             </h2>
 
-            <p>{country.shipping}</p>
-          </div>
-
-          <div className="border border-gray-800 rounded-xl p-6">
-            <h2 className="text-xl font-bold mb-2">
-              Top Imports
-            </h2>
-
-            {country.products.map((item) => (
-              <p key={item}>{item}</p>
-            ))}
+            <p>DHL Available</p>
           </div>
 
         </div>
 
-      </div>
+        <h2 className="text-3xl font-bold mb-6">
+          Products Available
+        </h2>
 
+        {countryProducts.length === 0 ? (
+          <p className="text-gray-400">
+            No products available yet.
+          </p>
+        ) : (
+          <div className="grid md:grid-cols-3 gap-6">
+
+            {countryProducts.map((product) => (
+              <Link
+                key={product.id}
+                href={`/products/${product.id}`}
+              >
+                <div className="border border-gray-800 rounded-xl p-6 hover:border-blue-500 transition cursor-pointer">
+
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-40 object-cover rounded-lg mb-4"
+                  />
+
+                  <h3 className="text-xl font-bold">
+                    {product.name}
+                  </h3>
+
+                  <p className="text-gray-400 mt-2">
+                    {product.category}
+                  </p>
+
+                </div>
+              </Link>
+            ))}
+
+          </div>
+        )}
+
+      </div>
     </main>
   );
 }

@@ -36,6 +36,22 @@ export default function Navbar() {
             Contact
           </Link>
 
+          <Link href="/faq">
+            FAQ
+          </Link>
+
+          <Link href="/admin">
+            Admin
+          </Link> 
+
+          <Link href="/calculator">
+            Calculator
+          </Link>
+
+          <Link href="/global-markets">
+            Global Markets
+          </Link>
+
         </div>
 
       </div>

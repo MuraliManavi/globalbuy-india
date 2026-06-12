@@ -1,24 +1,4 @@
-const products = {
-  "iphone-17-pro": {
-    name: "iPhone 17 Pro",
-    image: "https://placehold.co/800x500",
-    prices: [
-      { country: "🇦🇪 UAE", price: 81500 },
-      { country: "🇺🇸 USA", price: 83000 },
-      { country: "🇯🇵 Japan", price: 84200 },
-    ],
-  },
-
-  "playstation-6": {
-    name: "PlayStation 6",
-    image: "https://placehold.co/800x500",
-    prices: [
-      { country: "🇯🇵 Japan", price: 42000 },
-      { country: "🇺🇸 USA", price: 43500 },
-      { country: "🇦🇪 UAE", price: 44500 },
-    ],
-  },
-};
+import { products } from "../../data/products";
 
 export default async function ProductPage({
   params,
@@ -27,54 +7,184 @@ export default async function ProductPage({
 }) {
   const { id } = await params;
 
-  const product =
-    products[id as keyof typeof products];
+  const product = products.find(
+    (p) => p.id === id
+  );
 
   if (!product) {
     return (
-      <main className="p-10">
+      <main className="min-h-screen bg-black text-white p-10">
         <h1>Product Not Found</h1>
       </main>
     );
   }
 
+  const offers = product.offers
+    .map((offer) => ({
+      ...offer,
+      total:
+        offer.price +
+        offer.shipping +
+        offer.duty +
+        offer.gst,
+    }))
+    .sort((a, b) => a.total - b.total);
+
+  const bestDeal = offers[0];
+
+  const mostExpensive = offers[offers.length - 1];
+
+const savings =
+  mostExpensive.total - bestDeal.total;
+
   return (
     <main className="min-h-screen bg-black text-white p-10">
+      <div className="max-w-6xl mx-auto">
 
-      <img
-        src={product.image}
-        alt={product.name}
-        className="rounded-xl mb-8 w-full max-w-3xl"
-      />
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-96 object-cover rounded-xl mb-8"
+        />
 
-      <h1 className="text-5xl font-bold mb-8">
-        {product.name}
-      </h1>
+        <h1 className="text-5xl font-bold mb-4">
+          {product.name}
+        </h1>
 
-      <div className="space-y-4">
+        <p className="text-gray-400 mb-10">
+          Category: {product.category}
+        </p>
 
-        {product.prices.map((item, index) => (
-          <div
-            key={item.country}
-            className="border border-gray-800 rounded-xl p-6"
-          >
-            <p className="text-2xl">
-              {index === 0 ? "🥇 " : ""}
-              {item.country}
-            </p>
+        <h2 className="text-3xl font-bold mb-6">
+          Country Comparison
+        </h2>
 
-            <p className="text-xl">
-              ₹{item.price.toLocaleString()}
-            </p>
+        <div className="mb-10 border border-green-500 rounded-xl p-6 bg-green-950/20">
 
-            <button className="mt-4 bg-white text-black px-4 py-2 rounded-lg">
-              Buy Now
-            </button>
-          </div>
-        ))}
+  <h2 className="text-2xl font-bold text-green-400 mb-2">
+    🏆 Best Deal Found
+  </h2>
+
+  <p className="text-lg">
+    Buy from <strong>{bestDeal.country}</strong>
+  </p>
+
+  <p className="mt-2">
+    Total Cost: ₹{bestDeal.total.toLocaleString()}
+  </p>
+
+  <p className="mt-2 text-green-300 font-bold">
+    You Save ₹{savings.toLocaleString()}
+  </p>
+
+</div>
+
+        {/* Ranking Table */}
+
+        <div className="mb-10 overflow-x-auto">
+          <table className="w-full border border-gray-800 rounded-xl">
+
+            <thead>
+              <tr className="border-b border-gray-800">
+                <th className="p-3 text-left">
+                  Rank
+                </th>
+
+                <th className="p-3 text-left">
+                  Country
+                </th>
+
+                <th className="p-3 text-left">
+                  Total Cost
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {offers.map((offer, index) => (
+                <tr
+                  key={offer.country}
+                  className="border-b border-gray-800"
+                >
+                  <td className="p-3">
+                    {index === 0
+                      ? "🥇"
+                      : index === 1
+                      ? "🥈"
+                      : index === 2
+                      ? "🥉"
+                      : index + 1}
+                  </td>
+
+                  <td className="p-3">
+                    {offer.country}
+                  </td>
+
+                  <td className="p-3 font-bold">
+                    ₹{offer.total.toLocaleString()}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+
+          </table>
+        </div>
+
+        {/* Country Cards */}
+
+        <div className="grid md:grid-cols-2 gap-6">
+
+          {offers.map((offer) => (
+            <div
+              key={offer.country}
+              className={`
+                border rounded-xl p-6
+                ${
+                  offer.country === bestDeal.country
+                    ? "border-green-500"
+                    : "border-gray-800"
+                }
+              `}
+            >
+
+              <h3 className="text-2xl font-bold mb-4">
+                {offer.country}
+              </h3>
+
+              <p>
+                Price: ₹{offer.price.toLocaleString()}
+              </p>
+
+              <p>
+                Shipping: ₹{offer.shipping.toLocaleString()}
+              </p>
+
+              <p>
+                Duty: ₹{offer.duty.toLocaleString()}
+              </p>
+
+              <p>
+                GST: ₹{offer.gst.toLocaleString()}
+              </p>
+
+              <hr className="my-4 border-gray-700" />
+
+              <p className="text-xl font-bold">
+                Total: ₹{offer.total.toLocaleString()}
+              </p>
+
+              {offer.country === bestDeal.country && (
+                <p className="mt-3 text-green-400 font-bold">
+                  🏆 Best Deal
+                </p>
+              )}
+
+            </div>
+          ))}
+
+        </div>
 
       </div>
-
     </main>
   );
 }
