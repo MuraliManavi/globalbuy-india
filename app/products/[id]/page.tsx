@@ -186,6 +186,79 @@ const savings =
         </div>
 
       </div>
+
+      <div className="mt-8">
+
+  <h2 className="text-2xl font-bold mb-4">
+    Available Sellers
+  </h2>
+
+  <div className="flex flex-wrap gap-4">
+
+    <a
+      href="https://www.amazon.in"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="
+        bg-yellow-500
+        text-black
+        px-5
+        py-3
+        rounded-xl
+        font-semibold
+      "
+    >
+      🛒 Amazon
+    </a>
+
+    <a
+      href="https://www.ebay.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="
+        bg-blue-600
+        px-5
+        py-3
+        rounded-xl
+        font-semibold
+      "
+    >
+      🛒 eBay
+    </a>
+
+    <a
+      href="https://www.aliexpress.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="
+        bg-red-600
+        px-5
+        py-3
+        rounded-xl
+        font-semibold
+      "
+    >
+      🛒 AliExpress
+    </a>
+
+    <a
+      href="https://www.alibaba.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="
+        bg-orange-600
+        px-5
+        py-3
+        rounded-xl
+        font-semibold
+      "
+    >
+      🛒 Alibaba
+    </a>
+
+  </div>
+
+</div>
     </main>
   );
 }
