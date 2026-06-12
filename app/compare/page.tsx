@@ -23,22 +23,37 @@ export default function ComparePage() {
   const getBestDeal = (product: any) => {
     if (!product) return null;
 
-    const offers = product.offers.map((offer: any) => ({
-      ...offer,
-      total:
-        offer.price +
-        offer.shipping +
-        offer.duty +
-        offer.gst,
-    }));
+    const offers = product.offers
+      .map((offer: any) => ({
+        ...offer,
+        total:
+          offer.price +
+          offer.shipping +
+          offer.duty +
+          offer.gst,
+      }))
+      .sort((a: any, b: any) => a.total - b.total);
 
-    return offers.sort(
-      (a: any, b: any) => a.total - b.total
-    )[0];
+    return offers[0];
   };
 
   const best1 = getBestDeal(product1);
   const best2 = getBestDeal(product2);
+
+  const cheapestProduct =
+    best1 &&
+    best2 &&
+    best1.total < best2.total
+      ? {
+          name: product1?.name,
+          total: best1.total,
+          country: best1.country,
+        }
+      : {
+          name: product2?.name,
+          total: best2?.total,
+          country: best2?.country,
+        };
 
   return (
     <main className="min-h-screen bg-black text-white p-10">
@@ -49,10 +64,24 @@ export default function ComparePage() {
           Compare Products
         </h1>
 
+        <div className="mb-10 border border-blue-500 rounded-xl p-6">
+
+          <h2 className="text-2xl font-bold mb-3">
+            Product Comparison Summary
+          </h2>
+
+          <p className="text-gray-300">
+            Compare products across countries and
+            discover the lowest landed cost.
+          </p>
+
+        </div>
+
         <div className="grid md:grid-cols-2 gap-6 mb-10">
 
           <div>
-            <label className="block mb-2">
+
+            <label className="block mb-2 font-semibold">
               Product 1
             </label>
 
@@ -61,7 +90,15 @@ export default function ComparePage() {
               onChange={(e) =>
                 setProduct1Id(e.target.value)
               }
-              className="w-full p-3 rounded-xl text-black"
+              className="
+                w-full
+                p-4
+                rounded-xl
+                bg-gray-900
+                border
+                border-gray-700
+                text-white
+              "
             >
               {products.map((product) => (
                 <option
@@ -72,10 +109,12 @@ export default function ComparePage() {
                 </option>
               ))}
             </select>
+
           </div>
 
           <div>
-            <label className="block mb-2">
+
+            <label className="block mb-2 font-semibold">
               Product 2
             </label>
 
@@ -84,7 +123,15 @@ export default function ComparePage() {
               onChange={(e) =>
                 setProduct2Id(e.target.value)
               }
-              className="w-full p-3 rounded-xl text-black"
+              className="
+                w-full
+                p-4
+                rounded-xl
+                bg-gray-900
+                border
+                border-gray-700
+                text-white
+              "
             >
               {products.map((product) => (
                 <option
@@ -95,16 +142,40 @@ export default function ComparePage() {
                 </option>
               ))}
             </select>
+
           </div>
 
         </div>
 
+        {cheapestProduct && (
+          <div className="mb-10 border border-green-500 rounded-xl p-6">
+
+            <h2 className="text-2xl font-bold text-green-400 mb-3">
+              🏆 Cheapest Product
+            </h2>
+
+            <p className="text-xl">
+              {cheapestProduct.name}
+            </p>
+
+            <p className="mt-2">
+              Best Country: {cheapestProduct.country}
+            </p>
+
+            <p className="mt-2 text-2xl font-bold">
+              ₹{cheapestProduct.total?.toLocaleString()}
+            </p>
+
+          </div>
+        )}
+
         <div className="overflow-x-auto">
 
-          <table className="w-full border border-gray-800">
+          <table className="w-full border border-gray-800 rounded-xl">
 
             <thead>
               <tr className="border-b border-gray-800">
+
                 <th className="p-4 text-left">
                   Product
                 </th>
@@ -116,6 +187,7 @@ export default function ComparePage() {
                 <th className="p-4 text-left">
                   Total Cost
                 </th>
+
               </tr>
             </thead>
 
@@ -132,7 +204,7 @@ export default function ComparePage() {
                     🏆 {best1.country}
                   </td>
 
-                  <td className="p-4">
+                  <td className="p-4 font-bold">
                     ₹{best1.total.toLocaleString()}
                   </td>
 
@@ -150,7 +222,7 @@ export default function ComparePage() {
                     🏆 {best2.country}
                   </td>
 
-                  <td className="p-4">
+                  <td className="p-4 font-bold">
                     ₹{best2.total.toLocaleString()}
                   </td>
 
