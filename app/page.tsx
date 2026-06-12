@@ -59,6 +59,71 @@ export default function Home() {
 
       </section>
 
+
+      <section className="max-w-6xl mx-auto px-6 py-20">
+  <h2 className="text-4xl font-bold text-center mb-12">
+    How It Works
+  </h2>
+
+  <div className="grid md:grid-cols-3 gap-8">
+
+    <div className="border border-gray-800 p-6 rounded-xl">
+      <h3 className="text-2xl font-bold mb-3">
+        1️⃣ Search Product
+      </h3>
+      <p>
+        Find products from international markets.
+      </p>
+    </div>
+
+    <div className="border border-gray-800 p-6 rounded-xl">
+      <h3 className="text-2xl font-bold mb-3">
+        2️⃣ Compare Countries
+      </h3>
+      <p>
+        Compare prices from UAE, USA, Japan and more.
+      </p>
+    </div>
+
+    <div className="border border-gray-800 p-6 rounded-xl">
+      <h3 className="text-2xl font-bold mb-3">
+        3️⃣ Find Best Deal
+      </h3>
+      <p>
+        Discover the cheapest overall option.
+      </p>
+    </div>
+
+    <div className="border border-gray-800 p-6 rounded-xl">
+      <h3 className="text-2xl font-bold mb-3">
+        4️⃣ Estimate Cost
+      </h3>
+      <p>
+        Include shipping, duties and taxes.
+      </p>
+    </div>
+
+    <div className="border border-gray-800 p-6 rounded-xl">
+      <h3 className="text-2xl font-bold mb-3">
+        5️⃣ Buy From Seller
+      </h3>
+      <p>
+        Purchase directly from trusted international sellers.
+      </p>
+    </div>
+
+    <div className="border border-gray-800 p-6 rounded-xl">
+      <h3 className="text-2xl font-bold mb-3">
+        6️⃣ Ship via DHL
+      </h3>
+      <p>
+        Receive your order in India through DHL.
+      </p>
+    </div>
+
+  </div>
+</section>
+
     </main>
   );
 }
