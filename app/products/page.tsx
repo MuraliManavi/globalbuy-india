@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { products } from "../data/products";
 
 export default function ProductsPage() {
@@ -24,18 +25,20 @@ export default function ProductsPage() {
                 overflow-hidden
                 hover:border-blue-500
                 transition
+                bg-gray-950
               "
             >
 
-              <img
-                src={product.image}
-                alt={product.name}
-                className="
-                  w-full
-                  h-48
-                  object-cover
-                "
-              />
+              <div className="relative w-full h-56">
+
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                />
+
+              </div>
 
               <div className="p-6">
 
