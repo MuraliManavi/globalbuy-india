@@ -101,6 +101,17 @@ export default async function CountryPage({
                     {product.category}
                   </p>
 
+                  <button
+                     className="border border-red-500 px-4 py-2 rounded-xl"
+          >
+                    ❤️ Save Product
+                  </button>
+                  <button
+                    className="border border-yellow-500 px-4 py-2 rounded-xl"
+            >
+                    ⭐ Save Country
+                  </button>
+
                 </div>
               </Link>
             ))}
