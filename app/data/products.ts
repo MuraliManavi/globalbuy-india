@@ -2,7 +2,7 @@ export const products = [
   {
     id: "iphone-17-pro",
     name: "iPhone 17 Pro",
-    image: "https://placehold.co/800x500",
+    image: "/images/iphone.jpg",
     category: "Electronics",
     offers: [
       {
@@ -21,17 +21,10 @@ export const products = [
       },
       {
         country: "Japan",
-        price: 84200,
+        price: 82000,
         shipping: 2800,
         duty: 4100,
-        gst: 1550,
-      },
-      {
-        country: "Vietnam",
-        price: 86000,
-        shipping: 3200,
-        duty: 4300,
-        gst: 1700,
+        gst: 1500,
       },
     ],
   },
@@ -39,7 +32,7 @@ export const products = [
   {
     id: "macbook-air",
     name: "MacBook Air",
-    image: "https://placehold.co/800x500",
+    image: "/images/macbook.jpg",
     category: "Laptops",
     offers: [
       {
@@ -51,10 +44,10 @@ export const products = [
       },
       {
         country: "Japan",
-        price: 90500,
+        price: 90000,
         shipping: 2800,
         duty: 4400,
-        gst: 1650,
+        gst: 1600,
       },
     ],
   },
@@ -62,31 +55,31 @@ export const products = [
   {
     id: "vietnam-coffee",
     name: "Vietnam Robusta Coffee",
-    image: "https://placehold.co/800x500",
+    image: "/images/coffee.jpg",
     category: "Agriculture",
     offers: [
       {
         country: "Vietnam",
-        price: 1200,
-        shipping: 500,
-        duty: 150,
-        gst: 100,
+        price: 350,
+        shipping: 50,
+        duty: 20,
+        gst: 10,
       },
     ],
   },
 
   {
-    id: "black-pepper",
+    id: "vietnam-black-pepper",
     name: "Vietnam Black Pepper",
-    image: "https://placehold.co/800x500",
+    image: "/images/pepper.jpg",
     category: "Agriculture",
     offers: [
       {
         country: "Vietnam",
-        price: 1800,
-        shipping: 500,
-        duty: 180,
-        gst: 120,
+        price: 450,
+        shipping: 50,
+        duty: 25,
+        gst: 10,
       },
     ],
   },
@@ -94,15 +87,15 @@ export const products = [
   {
     id: "ceylon-tea",
     name: "Pure Ceylon Tea",
-    image: "https://placehold.co/800x500",
-    category: "Beverages",
+    image: "/images/tea.jpg",
+    category: "Agriculture",
     offers: [
       {
         country: "Sri Lanka",
-        price: 650,
-        shipping: 250,
-        duty: 80,
-        gst: 50,
+        price: 500,
+        shipping: 60,
+        duty: 20,
+        gst: 10,
       },
     ],
   },
@@ -110,31 +103,15 @@ export const products = [
   {
     id: "ceylon-cinnamon",
     name: "Ceylon Cinnamon",
-    image: "https://placehold.co/800x500",
-    category: "Spices",
+    image: "/images/cinnamon.jpg",
+    category: "Agriculture",
     offers: [
       {
         country: "Sri Lanka",
-        price: 1500,
-        shipping: 300,
-        duty: 120,
-        gst: 70,
-      },
-    ],
-  },
-
-  {
-    id: "large-cardamom",
-    name: "Large Cardamom",
-    image: "https://placehold.co/800x500",
-    category: "Spices",
-    offers: [
-      {
-        country: "Nepal",
-        price: 1000,
-        shipping: 300,
-        duty: 100,
-        gst: 60,
+        price: 300,
+        shipping: 50,
+        duty: 15,
+        gst: 10,
       },
     ],
   },
@@ -142,29 +119,13 @@ export const products = [
   {
     id: "pashmina-shawl",
     name: "Pashmina Shawl",
-    image: "https://placehold.co/800x500",
-    category: "Fashion",
-    offers: [
-      {
-        country: "Nepal",
-        price: 5500,
-        shipping: 600,
-        duty: 300,
-        gst: 150,
-      },
-    ],
-  },
-
-  {
-    id: "batik-fabric",
-    name: "Traditional Batik Fabric",
-    image: "https://placehold.co/800x500",
+    image: "/images/pashmina.jpg",
     category: "Textiles",
     offers: [
       {
-        country: "Indonesia",
-        price: 1800,
-        shipping: 500,
+        country: "Nepal",
+        price: 3500,
+        shipping: 300,
         duty: 200,
         gst: 100,
       },
@@ -172,25 +133,9 @@ export const products = [
   },
 
   {
-    id: "palm-oil",
-    name: "Crude Palm Oil",
-    image: "https://placehold.co/800x500",
-    category: "Agriculture",
-    offers: [
-      {
-        country: "Indonesia",
-        price: 2500,
-        shipping: 700,
-        duty: 300,
-        gst: 150,
-      },
-    ],
-  },
-
-  {
-    id: "gold-uzbekistan",
+    id: "uzbek-gold",
     name: "Uzbekistan Gold",
-    image: "https://placehold.co/800x500",
+    image: "/images/gold.jpg",
     category: "Precious Metals",
     offers: [
       {
@@ -199,22 +144,6 @@ export const products = [
         shipping: 5000,
         duty: 10000,
         gst: 5000,
-      },
-    ],
-  },
-
-  {
-    id: "cotton-uzbekistan",
-    name: "Raw Cotton",
-    image: "https://placehold.co/800x500",
-    category: "Textiles",
-    offers: [
-      {
-        country: "Uzbekistan",
-        price: 180,
-        shipping: 50,
-        duty: 20,
-        gst: 10,
       },
     ],
   },
