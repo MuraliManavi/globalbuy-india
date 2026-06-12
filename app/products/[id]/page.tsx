@@ -186,75 +186,112 @@ const savings =
         </div>
 
       </div>
+{/* Seller Marketplace */}
 
-      <div className="mt-8">
+<div className="max-w-6xl mx-auto mt-12">
 
-  <h2 className="text-2xl font-bold mb-4">
-    Available Sellers
-  </h2>
+  <div className="border border-gray-800 rounded-xl p-6">
 
-  <div className="flex flex-wrap gap-4">
+    <h2 className="text-3xl font-bold mb-6">
+      Available Sellers
+    </h2>
+
+    <div className="flex flex-wrap gap-4 mb-8">
+
+      <a
+        href="https://www.amazon.in"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="
+          bg-yellow-500
+          text-black
+          px-5
+          py-3
+          rounded-xl
+          font-semibold
+          hover:opacity-90
+        "
+      >
+        🛒 Amazon
+      </a>
+
+      <a
+        href="https://www.ebay.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="
+          bg-blue-600
+          text-white
+          px-5
+          py-3
+          rounded-xl
+          font-semibold
+          hover:opacity-90
+        "
+      >
+        🛒 eBay
+      </a>
+
+      <a
+        href="https://www.aliexpress.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="
+          bg-red-600
+          text-white
+          px-5
+          py-3
+          rounded-xl
+          font-semibold
+          hover:opacity-90
+        "
+      >
+        🛒 AliExpress
+      </a>
+
+      <a
+        href="https://www.alibaba.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="
+          bg-orange-600
+          text-white
+          px-5
+          py-3
+          rounded-xl
+          font-semibold
+          hover:opacity-90
+        "
+      >
+        🛒 Alibaba
+      </a>
+
+    </div>
 
     <a
       href="https://www.amazon.in"
       target="_blank"
       rel="noopener noreferrer"
       className="
-        bg-yellow-500
-        text-black
-        px-5
-        py-3
+        block
+        w-full
+        text-center
+        bg-green-600
+        hover:bg-green-700
+        text-white
+        py-4
         rounded-xl
-        font-semibold
+        text-xl
+        font-bold
+        transition
       "
     >
-      🛒 Amazon
+      🚀 Buy Now
     </a>
 
-    <a
-      href="https://www.ebay.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="
-        bg-blue-600
-        px-5
-        py-3
-        rounded-xl
-        font-semibold
-      "
-    >
-      🛒 eBay
-    </a>
-
-    <a
-      href="https://www.aliexpress.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="
-        bg-red-600
-        px-5
-        py-3
-        rounded-xl
-        font-semibold
-      "
-    >
-      🛒 AliExpress
-    </a>
-
-    <a
-      href="https://www.alibaba.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="
-        bg-orange-600
-        px-5
-        py-3
-        rounded-xl
-        font-semibold
-      "
-    >
-      🛒 Alibaba
-    </a>
+    <p className="text-gray-400 text-sm mt-4 text-center">
+      Compare prices and choose your preferred marketplace.
+    </p>
 
   </div>
 
